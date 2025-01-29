@@ -17,7 +17,7 @@
     --bs-btn-bg: var(--primary);
     --bs-btn-border-color: var(--primary);
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #f64d45;
+    --bs-btn-hover-bg: #156875;
     --bs-btn-hover-border-color: var(--secondary);
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
     --bs-btn-active-color: #fff;
@@ -144,6 +144,12 @@
     background-size: cover;
   }
 
+  .bgimage_bis{
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(/assets/images/image\ \(4\).jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
   a{
     text-decoration: none;
     color: inherit;
@@ -164,3 +170,6 @@
     background-position: center;
     background-size: cover;
   }
+
+
+
