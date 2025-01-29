@@ -75,7 +75,12 @@
   h1,
   h2,
   h3 {
-    font-family: "Space Mono", monospace;
+    font-family: "Anton", serif;
+  }
+
+  p{
+    font-family: "Poppins", serif;
+
   }
   
   h1 {
@@ -122,4 +127,40 @@
   .form-listing {
     max-width: 700px;
     padding: 1rem;
+  }
+
+
+
+
+
+
+
+
+
+
+  .bgimage{
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(/assets/images/image\ \(3\).jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .cardtest1{
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(/assets/images/image\ \(16\).jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  .cardtest2{
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(/assets/images/image\ \(12\).jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  .cardtest3{
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(/assets/images/image\ \(8\).jpg);
+    background-position: center;
+    background-size: cover;
   }
