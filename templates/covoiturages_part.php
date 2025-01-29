@@ -6,8 +6,8 @@
 
             <div class="text-start py-4">
                 <p class="card-text"><i class="bi bi-calendar"></i> Date : <?= $covoiturage["date_depart"]; ?></p>
-                <p class="card-text"><i class="bi bi-clock"></i> Heure de départ : <?= $covoiturage["heure_depart"]; ?></p>
-                <p class="card-text"><i class="bi bi-clock"></i> Heure d'arrivée' : <?= $covoiturage["heure_arrivee"]; ?></p>
+                <p class="card-text"><i class="bi bi-clock"></i> Départ : <?= $covoiturage["heure_depart"]; ?></p>
+                <p class="card-text"><i class="bi bi-clock"></i> Arrivée : <?= $covoiturage["heure_arrivee"]; ?></p>
                 <p class="card-text"><i class="bi bi-piggy-bank"></i> Prix : <?= $covoiturage["prix"]; ?> €</p>
                 <p class="card-text"><i class="bi bi-people-fill"></i> Places disponibles : <?= $covoiturage["place_disponible"]; ?></p>
             </div>

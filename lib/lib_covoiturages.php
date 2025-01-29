@@ -9,3 +9,9 @@ function getCovoiturages(): array
         ["adresse_depart" => "Bordeaux", "adresse_arrivee" => "Arcachon", "date_depart" => "19 février", "heure_depart" => "13h30",  "heure_arrivee" => "14h15", "prix" => 24, "place_disponible" => 2, "created_at" => "14/02/25",   "image" => "image (6).jpg"],
     ];
 }
+
+function getCovoituragesById(int $id): array
+{
+    $covoiturages = getCovoiturages();
+    return $covoiturages[$id];
+}
