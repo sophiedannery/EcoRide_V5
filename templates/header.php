@@ -43,7 +43,7 @@ session_start();
             <div class="col-md-3 text-end">
 
                 <?php if (isset($_SESSION["user"])): ?>
-                    <span>Bonjour <?= $_SESSION["user"]["pseudo"] ?> !</span>
+                    <button type="button" class="btn btn-outline-primary me-2"><a href="/mon_compte.php">Mon compte</a></button>
                     <button type="button" class="btn btn-primary"><a href="/deconnexion.php">Deconnexion</a></button>
                 <?php else: ?>
                     <button type="button" class="btn btn-outline-primary me-2"><a href="/connexion.php">Connexion</a></button>
