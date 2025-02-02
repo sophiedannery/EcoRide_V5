@@ -1,5 +1,22 @@
 <?php
-require_once 'templates/header.php'
+require_once 'templates/header.php';
+require_once 'lib/pdo.php';
+require_once 'lib/user.php';
+
+
+$errors = [];
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $verif = verifyUser($_POST);
+    if ($verif === true) {
+        $resAdd = addUSer($pdo, $_POST["pseudo"], $_POST["email"], $_POST["mot_de_passe"]);
+    } else {
+        $errors = $verif;
+    }
+}
+
+
+
 ?>
 
 
@@ -10,26 +27,45 @@ require_once 'templates/header.php'
 
 <div class="container">
     <div class="text-center">
-        <form class="p-4 p-md-4 border rounded-3 bg-body-tertiary">
+        <form method="post" class="p-4 p-md-4 border rounded-3 bg-body-tertiary">
 
             <div class="form-floating mb-3 ">
-                <input type="text" class="form-control" id="inscription_pseudo" placeholder="">
-                <label for="inscription_pseudo">Pseudo</label>
+                <input name="pseudo" type="text" class="form-control" id="pseudo" placeholder="">
+                <label for="pseudo">Pseudo</label>
+
+                <?php if (isset($errors["pseudo"])) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= $errors["pseudo"] ?>
+                    </div>
+                <?php } ?>
+
             </div>
 
             <div class="form-floating mb-3 ">
-                <input type="email" class="form-control" id="connexion_email" placeholder="">
-                <label for="connexion_email">Email</label>
+                <input name="email" type="email" class="form-control" id="email" placeholder="">
+                <label for="email">Email</label>
+
+                <?php if (isset($errors["email"])) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= $errors["email"] ?>
+                    </div>
+                <?php } ?>
+
             </div>
 
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="connexion_mot_de_passe" placeholder="">
-                <label for="connexion_mot_de_passe">Mot de passe</label>
+                <input name="mot_de_passe" type="password" class="form-control" id="mot_de_passe" placeholder="">
+                <label for="mot_de_passe">Mot de passe</label>
+
+                <?php if (isset($errors["mot_de_passe"])) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= $errors["mot_de_passe"] ?>
+                    </div>
+                <?php } ?>
+
             </div>
 
-
-
-            <button class="w-100 btn btn-lg btn-primary" type="submit">S'inscrire</button>
+            <input class="w-100 btn btn-lg btn-primary" type="submit" value="S'inscrire" name=add_user>
             <hr class="my-4">
 
         </form>
@@ -46,5 +82,5 @@ require_once 'templates/header.php'
 
 
 <?php
-require_once 'templates/footer.php'
+require_once 'templates/footer.php';
 ?>
