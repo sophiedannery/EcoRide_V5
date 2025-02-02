@@ -12,7 +12,9 @@
                 <p class="card-text"><i class="bi bi-people-fill"></i> Places disponibles : <?= $covoiturage["place_disponible"]; ?></p>
             </div>
 
-            <a href="#" class="btn btn-primary stretched-link w-100">Détails</a>
+            <!-- Ici le lien à modifier pour récupérer l'id et être amené sur la page du trajet en question -->
+            <!-- $key cf le for each sur la page covoiturages.php, $key c'est l'ID -->
+            <a href="covoiturage.php?id=<?= $key ?>" class="btn btn-primary stretched-link w-100">Détails</a>
 
             <div>
                 <p class="card-text text-secondary pt-5 small text-end">Annonce publié le <?= $covoiturage["created_at"]; ?></p>

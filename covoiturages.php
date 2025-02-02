@@ -112,7 +112,7 @@ $covoiturages = getCovoiturages();
 
         <div class="col-md-9">
             <div class="row">
-                <?php foreach ($covoiturages as $covoiturage) {
+                <?php foreach ($covoiturages as $key => $covoiturage) {
                     require 'templates/covoiturages_part.php';
                 } ?>
             </div>

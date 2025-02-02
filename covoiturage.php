@@ -2,11 +2,22 @@
 require_once 'templates/header.php';
 require_once 'lib/lib_covoiturages.php';
 
-$covoiturage = getCovoituragesById(2);
+
+
+
+
+// Récupérer l'ID dans l'url (quand on clique sur une annonce, ça ouvre la page de la bonne annonce grâce à l'ID récupérer dans le GET)
+if (isset($_GET["id"])) {
+    $id = (int)$_GET["id"];
+    //fonction pour récupérer le tableau des trajets et les stocker dans la variable (fonciton créée sur lib_covoiturage.php)
+    $covoiturage = getCovoituragesById($id);
+}
+// maintenant faut amener ça sur les liens des trajets (voir dans templates/covoiturage_part)
 
 
 
 ?>
+
 
 <div class="bgimage_bis mb-5">
     <h1 class="text-white text-center py-5">Détails</h1>
@@ -20,18 +31,18 @@ $covoiturage = getCovoituragesById(2);
         <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
 
             <h1 class="display-4 fw-bold lh-1 text-body-emphasis pb-5"><?= $covoiturage["adresse_depart"]; ?> - <?= $covoiturage["adresse_arrivee"]; ?></h1>
+            <h3 class="pb-3"><?= $covoiturage["prix"]; ?> crédits</h3>
 
             <div class="py-4">
                 <p><i class="bi bi-calendar"></i> Date : <strong><?= $covoiturage["date_depart"]; ?></strong></p>
                 <p><i class="bi bi-clock"></i> Départ : <strong><?= $covoiturage["heure_depart"]; ?></strong></p>
                 <p><i class="bi bi-clock"></i> Arrivée : <strong><?= $covoiturage["heure_arrivee"]; ?></strong></p>
-                <p><i class="bi bi-piggy-bank"></i> Prix : <strong><?= $covoiturage["prix"]; ?> €</strong></p>
                 <p><i class="bi bi-people-fill"></i> Places disponibles : <strong><?= $covoiturage["place_disponible"]; ?></strong></p>
             </div>
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                 <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Reserver une place</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Retour</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4"><a href="/covoiturages.php">Retour</a></button>
             </div>
         </div>
 
@@ -72,7 +83,7 @@ $covoiturage = getCovoituragesById(2);
 
 
 
-            <!-- Exemple d'avis, à remplacer par des données dynamiques -->
+            <!-- Exemple d'avis-->
             <h3>Avis</h3>
             <div class="card mb-3">
                 <div class="card-body">
