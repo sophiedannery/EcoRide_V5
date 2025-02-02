@@ -1,6 +1,5 @@
 <div class="col-md-4 my-2 d-flex">
     <div class="card w-100">
-        <img src="/uploads/photo_de_profil/profils/<?= $covoiturage["image"]; ?>" class="card-img-top" alt="<?= $covoiturage["adresse_depart"]; ?> - <?= $covoiturage["adresse_arrivee"]; ?>">
         <div class="card-body">
             <h5 class="card-title"><?= $covoiturage["adresse_depart"]; ?> - <?= $covoiturage["adresse_arrivee"]; ?></h5>
 
@@ -13,8 +12,7 @@
             </div>
 
             <!-- Ici le lien à modifier pour récupérer l'id et être amené sur la page du trajet en question -->
-            <!-- $key cf le for each sur la page covoiturages.php, $key c'est l'ID -->
-            <a href="covoiturage.php?id=<?= $key ?>" class="btn btn-primary stretched-link w-100">Détails</a>
+            <a href="covoiturage.php?id=<?= $covoiturage["id"]  ?>" class="btn btn-primary stretched-link w-100">Détails</a>
 
             <div>
                 <p class="card-text text-secondary pt-5 small text-end">Annonce publié le <?= $covoiturage["created_at"]; ?></p>

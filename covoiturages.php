@@ -1,8 +1,9 @@
 <?php
 require_once 'templates/header.php';
+require_once 'lib/pdo.php';
 require_once 'lib/lib_covoiturages.php';
 
-$covoiturages = getCovoiturages();
+$covoiturages = getCovoiturages($pdo);
 
 ?>
 
