@@ -16,11 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($user) {
         //régénérer un nouvel id de session (id unique)
         session_regenerate_id(true);
+
+        // récupérer les crédits
+        $query = $pdo->prepare("SELECT credits FROM user WHERE id = :id");
+        $query->bindValue(":id", $user["id"]);
+        $query->execute();
+        $userCredits = $query->fetch(PDO::FETCH_ASSOC);
+
         //stocker les infos dans la session
         $_SESSION["user"] = [
             "id" => $user["id"],
-            "pseudo" => $user["pseudo"]
+            "pseudo" => $user["pseudo"],
+            "credits" => $userCredits["credits"]
         ];
+
+
         //relocation
         header("Location: mon_compte.php");
     } else {

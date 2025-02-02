@@ -16,6 +16,7 @@ function getCovoiturages(PDO $pdo): array
 
 
 
+
 function getCovoituragesById(PDO $pdo, int $id): array|bool
 {
     $sql = "SELECT trajet.id, trajet.adresse_depart, trajet.adresse_arrivee, trajet.date_depart, trajet.heure_depart, trajet.heure_arrivee, trajet.prix, trajet.place_disponible, trajet.created_at

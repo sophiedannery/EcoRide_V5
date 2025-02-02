@@ -16,6 +16,8 @@ require_once 'lib/pdo.php';
     <button type="button" class="btn btn-primary"><a href="/ajout_covoiturage.php">Ajouter un trajet</a></button>
 </div>
 
+<h1 class="text-center py-5"><?= $_SESSION["user"]["credits"] ?> crédits</h1>
+
 
 
 

@@ -3,7 +3,7 @@
 
 function addUSer(PDO $pdo, string $pseudo, string $email, string $mot_de_passe): bool
 {
-    $query = $pdo->prepare("INSERT INTO user (pseudo, email, mot_de_passe) VALUES (:pseudo, :email, :mot_de_passe)");
+    $query = $pdo->prepare("INSERT INTO user (pseudo, email, mot_de_passe, credits) VALUES (:pseudo, :email, :mot_de_passe, 20)");
 
     // sécurises le mot de passe 
     $mot_de_passe = password_hash($mot_de_passe, PASSWORD_DEFAULT);
