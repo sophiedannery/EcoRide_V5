@@ -12,6 +12,10 @@ require_once 'lib/pdo.php';
     <h1 class="text-white text-center py-5">Hello <?= $_SESSION["user"]["pseudo"] ?></h1>
 </div>
 
+<div class="container text-center">
+    <button type="button" class="btn btn-primary"><a href="/ajout_covoiturage.php">Ajouter un trajet</a></button>
+</div>
+
 
 
 
