@@ -34,8 +34,8 @@
             </ul>
 
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2">Connexion</button>
-                <button type="button" class="btn btn-primary">Inscription</button>
+                <button type="button" class="btn btn-outline-primary me-2"><a href="/connexion.php">Connexion</a></button>
+                <button type="button" class="btn btn-primary"><a href="/inscription.php">Inscription</a></button>
             </div>
         </header>
     </div>
