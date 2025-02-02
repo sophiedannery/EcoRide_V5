@@ -10,6 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $verif = verifyUser($_POST);
     if ($verif === true) {
         $resAdd = addUSer($pdo, $_POST["pseudo"], $_POST["email"], $_POST["mot_de_passe"]);
+        //si inscription s'est bien passé, on redirige vers la page de connexion
+        header("Location: connexion.php");
     } else {
         $errors = $verif;
     }

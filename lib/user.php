@@ -17,6 +17,15 @@ function addUSer(PDO $pdo, string $pseudo, string $email, string $mot_de_passe):
 }
 
 
+
+
+
+
+
+
+
+
+
 //fonction pour d'abord vérifier que le tableau POST est bien complé et gérer les messages d'erreurs s'il manque des infos
 // on vérifie d'abord tout ça avant d'envoyer un addUser sur la bdd
 function verifyUser($user): array|bool
@@ -63,5 +72,31 @@ function verifyUser($user): array|bool
         return $errors;
     } else {
         return true;
+    }
+}
+
+
+
+
+
+
+
+
+
+// Une fonction pour vérifier que le mot de passe match avec celui de la bdd
+function verifyUserLoginPassword(PDO $pdo, string $email, string $mot_de_passe): bool|array
+{
+    //on fait une requête préparée pour récupérer les champs de la table user dans la BDD
+    // WHERE email = email c'est pour voir si il y a bien un utilisateur qui a cet email déjà inscrit
+    $query = $pdo->prepare("SELECT id, pseudo, email, mot_de_passe FROM user WHERE email = :email");
+    $query->bindValue(":email", $email);
+    $query->execute();
+    $user = $query->fetch(PDO::FETCH_ASSOC);
+
+    //si on a bien un utilisateur et que le mot de passe est correct alors :
+    if ($user && password_verify($mot_de_passe, $user["mot_de_passe"])) {
+        return $user;
+    } else {
+        return false;
     }
 }

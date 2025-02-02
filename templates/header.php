@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -35,8 +41,14 @@
             </ul>
 
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2"><a href="/connexion.php">Connexion</a></button>
-                <button type="button" class="btn btn-primary"><a href="/inscription.php">Inscription</a></button>
+
+                <?php if (isset($_SESSION["user"])): ?>
+                    <span>Bonjour <?= $_SESSION["user"]["pseudo"] ?> !</span>
+                    <button type="button" class="btn btn-primary"><a href="/deconnexion.php">Deconnexion</a></button>
+                <?php else: ?>
+                    <button type="button" class="btn btn-outline-primary me-2"><a href="/connexion.php">Connexion</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/inscription.php">Inscription</a></button>
+                <?php endif; ?>
             </div>
         </header>
     </div>
