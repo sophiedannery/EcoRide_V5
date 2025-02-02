@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <form method="post" class="p-4 p-md-4 border rounded-3 bg-body-tertiary">
 
             <div class="form-floating mb-3 ">
-                <input name="pseudo" type="text" class="form-control" id="pseudo" placeholder="">
+                <input name="pseudo" type="text" class="form-control" id="pseudo" placeholder="" value="<?= htmlspecialchars($_POST['pseudo'] ?? '') ?>">
                 <label for="pseudo">Pseudo</label>
 
                 <?php if (isset($errors["pseudo"])) { ?>
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
 
             <div class="form-floating mb-3 ">
-                <input name="email" type="email" class="form-control" id="email" placeholder="">
+                <input name="email" type="email" class="form-control" id="email" placeholder="" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
                 <label for="email">Email</label>
 
                 <?php if (isset($errors["email"])) { ?>

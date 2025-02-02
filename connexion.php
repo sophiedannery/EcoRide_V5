@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <form method="post" class="p-4 p-md-4 border rounded-3 bg-body-tertiary">
 
             <div class="form-floating mb-3 ">
-                <input type="email" name="email" class="form-control" id="email" placeholder="">
+                <input type="email" name="email" class="form-control" id="email" placeholder="" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
                 <label for="email">Email</label>
             </div>
 
