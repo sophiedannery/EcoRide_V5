@@ -9,9 +9,15 @@ $errors = [];
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $verif = verifyUser($_POST);
     if ($verif === true) {
-        $resAdd = addUSer($pdo, $_POST["pseudo"], $_POST["email"], $_POST["mot_de_passe"]);
-        //si inscription s'est bien passé, on redirige vers la page de connexion
-        header("Location: connexion.php");
+
+        //verif si mails déjà utilisé
+        if (isEmailAlreadyUsed($pdo, $_POST["email"])) {
+            $errors["email"] = "Cette adresse email est déjà utilisée";
+        } else {
+            $resAdd = addUSer($pdo, $_POST["pseudo"], $_POST["email"], $_POST["mot_de_passe"]);
+            //si inscription s'est bien passé, on redirige vers la page de connexion
+            header("Location: connexion.php");
+        }
     } else {
         $errors = $verif;
     }

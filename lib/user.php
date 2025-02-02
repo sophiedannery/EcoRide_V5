@@ -76,7 +76,15 @@ function verifyUser($user): array|bool
 }
 
 
-
+// Fonction pour vérifier si l'email n'est pas déjà utilisé 
+function isEmailAlreadyUsed(PDO $pdo, string $email): bool
+{
+    $query = $pdo->prepare("SELECT id FROM user WHERE email = :email");
+    $query->bindValue(":email", $email);
+    $query->execute();
+    //Si deux mails identiques, return true
+    return (bool) $query->fetch(PDO::FETCH_ASSOC);
+}
 
 
 
