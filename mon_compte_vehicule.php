@@ -53,7 +53,7 @@ $vehicules = getUserVehicule($pdo, $user_id);
 
 
 
-<div class="bgimage_bis mb-5">
+<div class="bgimage_bis">
     <h1 class="text-white text-center py-5">Vos véhicule</h1>
 </div>
 

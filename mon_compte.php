@@ -21,7 +21,7 @@ $countTrajets = count($trajets);
 ?>
 
 
-<div class="bgimage_bis mb-5">
+<div class="bgimage_bis">
     <h1 class="text-white text-center py-5">Hello <?= $_SESSION["user"]["pseudo"] ?></h1>
 </div>
 
