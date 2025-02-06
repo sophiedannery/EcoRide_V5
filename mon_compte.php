@@ -3,7 +3,10 @@ require_once 'templates/header.php';
 require_once 'lib/user.php';
 require_once 'lib/pdo.php';
 require_once 'lib/lib_covoiturages.php';
-require_once 'lib/lib_ajout_vehicule.php';
+require_once 'lib/lib_vehicule.php';
+
+
+
 
 //Rediriger quelqu'un s'il n'est pas connecté
 if (!isset($_SESSION["user"])) {
@@ -11,8 +14,14 @@ if (!isset($_SESSION["user"])) {
     exit();
 }
 
+
+
+
+
+// Récupérer les trajets de l'utilisateur connecté
 $user_id = $_SESSION["user"]["id"];
 $trajets = getUserCovoiturages($pdo, $user_id);
+// cf. /lib_covoiturages.php
 
 $trajets_a_venir = [];
 $trajets_passes = [];
@@ -28,8 +37,14 @@ foreach ($trajets as $trajet) {
     }
 }
 
+
+
+
+
+// Récupérer les véhicules de l'utilisateur connecté
 $user_id = $_SESSION["user"]["id"];
 $vehicules = getUserVehicule($pdo, $user_id);
+// cf. lib_ajout_vehicule
 
 
 
@@ -52,6 +67,8 @@ $vehicules = getUserVehicule($pdo, $user_id);
 
 <h1 class="text-center py-5"> Ma note : <?= $_SESSION["user"]["note"] ?></h1>
 
+
+<!-- // Afficher les véhicules de l'utilisateur connecté -->
 <div class="container">
     <h1 class="mt-4">Mon véhicule</h1>
     <?php if (count($vehicules) > 0): ?>
@@ -75,11 +92,14 @@ $vehicules = getUserVehicule($pdo, $user_id);
         </div>
 
     <?php else: ?>
-        <button type="button" class="btn btn-primary"><a href="/ajout_vehicule.php">Enregistre toon véhicule</a></button>
+        <p>Pas de véhicule enregistré</p>
+        <button type="button" class="btn btn-primary"><a href="/ajout_vehicule.php">Enregistre ton véhicule</a></button>
     <?php endif; ?>
 </div>
 
 
+
+<!-- Afficher les trajets de l'utilisateur connecté  -->
 <div class="container">
     <h1 class="mt-4">Mes trajets à venir</h1>
     <?php if (count($trajets_a_venir) > 0): ?>

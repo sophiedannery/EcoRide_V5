@@ -4,10 +4,15 @@ require_once 'lib/pdo.php';
 require_once 'lib/user.php';
 
 
+
+// Logique d'inscription
 $errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     $verif = verifyUser($_POST);
+    // cf. user.php
+
     if ($verif === true) {
 
         //verif si mails déjà utilisé

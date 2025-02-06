@@ -1,5 +1,7 @@
 <?php
 
+// rajouter un véhicule à la bdd
+// ajout_vehicule.php
 function addVehicule(PDO $pdo, string $marque, string $modele, string $couleur, string $plaque_immatriculation,  string $date_premiere_immatriculation, bool $est_ecologique, int $user_id): bool
 {
     $query = $pdo->prepare("
@@ -21,7 +23,9 @@ function addVehicule(PDO $pdo, string $marque, string $modele, string $couleur, 
 
 
 
-
+// Récupérer les  véhicules de l'utilisateur connecté 
+// mon_compte.php
+// ajout_covoiturage.php
 function getUserVehicule(PDO $pdo, int $user_id): array
 {
     $query = $pdo->prepare("

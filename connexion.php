@@ -1,7 +1,8 @@
 <?php
 require_once 'templates/header.php';
-require_once 'lib/user.php';
 require_once 'lib/pdo.php';
+require_once 'lib/user.php';
+
 
 
 
@@ -11,6 +12,7 @@ $error = null;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //appel de la fonction
     $user = verifyUserLoginPassword($pdo, $_POST["email"], $_POST["mot_de_passe"]);
+    // cf. user.php
 
     //si la connexion se passe bien, alors : 
     if ($user) {

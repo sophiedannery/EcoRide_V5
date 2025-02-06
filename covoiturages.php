@@ -2,16 +2,15 @@
 require_once 'templates/header.php';
 require_once 'lib/pdo.php';
 require_once 'lib/lib_covoiturages.php';
-require_once 'lib/lib_ajout_covoiturage.php';
 
 
 
-
-// $covoiturages = getCovoiturages($pdo);
 $covoiturages = getAllCovoiturages($pdo);
 
 ?>
 
+
+<!-- Formulaire de recherche covoiturages -->
 <div class="bgimage_bis mb-5">
     <h1 class="text-white text-center py-5">Recherchez un covoiturage</h1>
 </div>
@@ -65,6 +64,8 @@ $covoiturages = getAllCovoiturages($pdo);
 
     <div class="row">
 
+
+        <!-- filtre de recherche -->
         <div class="col-md-3">
             <form action="" method="get">
                 <h3>Filtres</h3>
@@ -116,6 +117,9 @@ $covoiturages = getAllCovoiturages($pdo);
             </form>
         </div>
 
+
+
+        <!-- Cards covoiturages -->
         <div class="col-md-9">
             <div class="row">
                 <?php foreach ($covoiturages as $key => $covoiturage) {

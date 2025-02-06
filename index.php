@@ -5,6 +5,7 @@ require_once 'lib/pdo.php';
 ?>
 
 
+<!-- Formulaire page d'accueil -->
 <div class="bgimage">
     <div class="container col-xl-10 col-xxl-8 px-4 py-5 ">
         <div class="row align-items-center g-lg-5 py-5">
@@ -116,7 +117,7 @@ require_once 'lib/pdo.php';
 </div>
 
 
-<!--Paragraphe 5-->
+<!--Paragraphe 4 -->
 <div class="container my-5">
     <div class="p-5 text-center bg-body-secondary rounded-3">
         <img src="/assets/images/vecteur3.png" alt="Logo EcoRide" width="300">

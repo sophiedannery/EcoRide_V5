@@ -1,8 +1,9 @@
 <?php
 require_once 'templates/header.php';
-require_once 'lib/user.php';
-require_once 'lib/lib_ajout_covoiturage.php';
 require_once 'lib/pdo.php';
+require_once 'lib/user.php';
+require_once 'lib/lib_covoiturages.php';
+require_once 'lib/lib_vehicule.php';
 
 //session est start dans le header
 
@@ -31,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     //ajout à la bdd grâce à la fonction
     $res = validateAndAddTrip($pdo, $_SESSION["user"]["id"], $tripData);
+    // cf. covoiturage.php
 
     //message de succès ou d'erreur 
     if ($res === true) {
@@ -39,6 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors = $res;
     }
 }
+
+
+
+// Récupérer les véhicules de l'utilisateur connecté pour le formulaire 
+$user_id = $_SESSION["user"]["id"];
+$vehicules = getUserVehicule($pdo, $user_id);
+//lib_vehicule.php
 
 ?>
 
@@ -107,10 +116,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
             </div>
 
-            <select class="form-select mb-3" aria-label="Default select example">
+            <select class="form-select mb-3" aria-label="Default select example" name="vehicule_id">
                 <option selected>Véhicule</option>
-                <option value="1">Fiat 500</option>
-                <option value="2">Peugeot Expert</option>
+                <?php foreach ($vehicules as $vehicule): ?>
+                    <option value="<?= $vehicule['id'] ?>"> <?= $vehicule['marque'] ?> - <?= $vehicule['modele'] ?> </option>
+                <?php endforeach; ?>
             </select>
 
             <button class="w-100 btn btn-lg btn-primary" type="submit">C'est parti</button>

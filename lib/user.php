@@ -1,6 +1,7 @@
 <?php
 
-
+//ajouter un user à la bdd
+//inscription.php
 function addUSer(PDO $pdo, string $pseudo, string $email, string $mot_de_passe): bool
 {
     $query = $pdo->prepare("INSERT INTO user (pseudo, email, mot_de_passe, credits) VALUES (:pseudo, :email, :mot_de_passe, 20)");
@@ -22,12 +23,9 @@ function addUSer(PDO $pdo, string $pseudo, string $email, string $mot_de_passe):
 
 
 
-
-
-
-
 //fonction pour d'abord vérifier que le tableau POST est bien complé et gérer les messages d'erreurs s'il manque des infos
 // on vérifie d'abord tout ça avant d'envoyer un addUser sur la bdd
+//inscription.php
 function verifyUser($user): array|bool
 {
 
@@ -77,6 +75,7 @@ function verifyUser($user): array|bool
 
 
 // Fonction pour vérifier si l'email n'est pas déjà utilisé 
+//inscription.php
 function isEmailAlreadyUsed(PDO $pdo, string $email): bool
 {
     $query = $pdo->prepare("SELECT id FROM user WHERE email = :email");
@@ -92,6 +91,7 @@ function isEmailAlreadyUsed(PDO $pdo, string $email): bool
 
 
 // Une fonction pour vérifier que le mot de passe match avec celui de la bdd
+// connexion.php
 function verifyUserLoginPassword(PDO $pdo, string $email, string $mot_de_passe): bool|array
 {
     //on fait une requête préparée pour récupérer les champs de la table user dans la BDD

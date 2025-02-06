@@ -2,7 +2,6 @@
 require_once 'templates/header.php';
 require_once 'lib/lib_covoiturages.php';
 require_once 'lib/pdo.php';
-require_once 'lib/lib_ajout_covoiturage.php';
 
 
 //préparation, en cas de mauvais url, ou id non présent dans l'url, va devenir true
@@ -13,6 +12,7 @@ if (isset($_GET["id"])) {
     $id = (int)$_GET["id"];
     //fonction pour récupérer le tableau des trajets et les stocker dans la variable (fonciton créée sur lib_covoiturage.php)
     $covoiturage = getCovoituragesById($pdo, $id);
+    // cf. lib_covoiturages.php
 
     if (!$covoiturage) {
         $error404 = true;
@@ -27,7 +27,7 @@ if (isset($_GET["id"])) {
 ?>
 
 
-
+<!-- Si il y a un trajet qui correspond, on affiche la page, sinon 'Trajet introuvable' -->
 <?php if (isset($covoiturage) && $covoiturage): ?>
     <div class="bgimage_bis mb-5">
         <h1 class="text-white text-center py-5">Détails</h1>

@@ -2,7 +2,7 @@
 require_once 'templates/header.php';
 require_once 'lib/user.php';
 require_once 'lib/pdo.php';
-require_once 'lib/lib_ajout_vehicule.php';
+require_once 'lib/lib_vehicule.php';
 
 //session est start dans le header
 
@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "Tous les champs sont obligatoires.";
     }
 }
+// la fonction addVehicule : cf. lib_vehicule.php
 
 
 
