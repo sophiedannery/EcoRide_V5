@@ -7,7 +7,7 @@
                 <p class="card-text"><i class="bi bi-calendar"></i> Date : <?= $covoiturage["date_depart"]; ?></p>
                 <p class="card-text"><i class="bi bi-clock"></i> Départ : <?= $covoiturage["heure_depart"]; ?></p>
                 <p class="card-text"><i class="bi bi-clock"></i> Arrivée : <?= $covoiturage["heure_arrivee"]; ?></p>
-                <p class="card-text"><i class="bi bi-piggy-bank"></i> Prix : <?= $covoiturage["prix"]; ?> €</p>
+                <p class="card-text"><i class="bi bi-piggy-bank"></i> Prix : <?= $covoiturage["prix"]; ?> crédits</p>
                 <p class="card-text"><i class="bi bi-people-fill"></i> Places disponibles : <?= $covoiturage["place_disponible"]; ?></p>
                 <p class="card-text"><i class="bi bi-people-fill"></i> Chauffeur : <?= $covoiturage["pseudo"]; ?></p>
             </div>
@@ -18,7 +18,7 @@
             </div>
 
             <div>
-                <p class="card-text text-secondary pt-5 small text-end">Annonce publié le <?= $covoiturage["created_at"]; ?></p>
+                <p class="card-text text-secondary pt-5 small text-end">Annonce publiée le <?= $covoiturage["created_at"]; ?></p>
             </div>
 
         </div>

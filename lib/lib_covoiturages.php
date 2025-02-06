@@ -59,3 +59,25 @@ function getCovoituragesById(PDO $pdo, int $id): array|bool
     $query->execute();
     return $query->fetch(PDO::FETCH_ASSOC);
 }
+
+
+function getUserCovoiturages(PDO $pdo, int $user_id): array
+{
+    $query = $pdo->prepare("
+    SELECT
+    id, 
+    adresse_depart,
+    adresse_arrivee,
+    date_depart,
+    heure_depart,
+    heure_arrivee,
+    prix,
+    created_at
+    FROM trajet
+    WHERE user_id = :user_id
+    ");
+    $query->bindValue(":user_id", $user_id);
+    $query->execute();
+
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
