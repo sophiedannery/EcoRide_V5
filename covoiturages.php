@@ -2,8 +2,13 @@
 require_once 'templates/header.php';
 require_once 'lib/pdo.php';
 require_once 'lib/lib_covoiturages.php';
+require_once 'lib/lib_ajout_covoiturage.php';
 
-$covoiturages = getCovoiturages($pdo);
+
+
+
+// $covoiturages = getCovoiturages($pdo);
+$covoiturages = getAllCovoiturages($pdo);
 
 ?>
 

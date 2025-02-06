@@ -56,3 +56,27 @@ function validateAndAddTrip(PDO $pdo, int $user_id, array $tripData): bool|array
 
     return $query->execute();
 }
+
+
+function getAllCovoiturages(PDO $pdo): array
+{
+    $query = $pdo->query("
+    SELECT
+    trajet.id,
+    trajet.adresse_depart,
+    trajet.adresse_arrivee, 
+    trajet.date_depart,
+    trajet.heure_depart,
+    trajet.heure_arrivee,
+    trajet.prix,
+    trajet.place_disponible,
+    trajet.created_at,
+    user.pseudo,
+    user.note,
+    user.photo
+    FROM trajet
+    JOIN user ON trajet.user_id = user.id
+    ");
+
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}

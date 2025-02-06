@@ -9,6 +9,7 @@
                 <p class="card-text"><i class="bi bi-clock"></i> Arrivée : <?= $covoiturage["heure_arrivee"]; ?></p>
                 <p class="card-text"><i class="bi bi-piggy-bank"></i> Prix : <?= $covoiturage["prix"]; ?> €</p>
                 <p class="card-text"><i class="bi bi-people-fill"></i> Places disponibles : <?= $covoiturage["place_disponible"]; ?></p>
+                <p class="card-text"><i class="bi bi-people-fill"></i> Chauffeur : <?= $covoiturage["pseudo"]; ?></p>
             </div>
 
             <div class="mt-auto">

@@ -3,8 +3,6 @@ require_once 'templates/header.php';
 require_once 'lib/user.php';
 require_once 'lib/pdo.php';
 
-
-
 ?>
 
 

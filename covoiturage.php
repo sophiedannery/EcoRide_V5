@@ -2,6 +2,7 @@
 require_once 'templates/header.php';
 require_once 'lib/lib_covoiturages.php';
 require_once 'lib/pdo.php';
+require_once 'lib/lib_ajout_covoiturage.php';
 
 
 //préparation, en cas de mauvais url, ou id non présent dans l'url, va devenir true
@@ -47,6 +48,7 @@ if (isset($_GET["id"])) {
                     <p><i class="bi bi-clock"></i> Départ : <strong><?= $covoiturage["heure_depart"]; ?></strong></p>
                     <p><i class="bi bi-clock"></i> Arrivée : <strong><?= $covoiturage["heure_arrivee"]; ?></strong></p>
                     <p><i class="bi bi-people-fill"></i> Places disponibles : <strong><?= $covoiturage["place_disponible"]; ?></strong></p>
+                    <p><i class="bi bi-people-fill"></i> Chauffeur : <strong><?= $covoiturage["pseudo"]; ?></strong></p>
                 </div>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
@@ -60,7 +62,7 @@ if (isset($_GET["id"])) {
 
                 <div class="row py-5 d-flex align-items-center">
                     <div class="col-lg-6">
-                        <h2 class="fw-bold">Emma - <i class="bi bi-star-fill"></i> 5</h2>
+                        <h2 class="fw-bold"><?= $covoiturage["pseudo"]; ?> - <i class="bi bi-star-fill"></i> <?= $covoiturage["note"]; ?></h2>
                     </div>
                     <div class="col-lg-6">
                         <img src="/assets/profils/image (2).jpg" class="bd-placeholder rounded-circle" style="object-fit: cover;" alt="Photo du chauffeur" width="100" height="100">
