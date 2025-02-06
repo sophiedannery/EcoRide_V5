@@ -96,10 +96,13 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $mot_de_passe):
 {
     //on fait une requête préparée pour récupérer les champs de la table user dans la BDD
     // WHERE email = email c'est pour voir si il y a bien un utilisateur qui a cet email déjà inscrit
-    $query = $pdo->prepare("SELECT id, pseudo, email, mot_de_passe FROM user WHERE email = :email");
+
+    $query = $pdo->prepare("SELECT id, pseudo, email, mot_de_passe, credits, note FROM user WHERE email = :email");
     $query->bindValue(":email", $email);
     $query->execute();
     $user = $query->fetch(PDO::FETCH_ASSOC);
+
+
 
     //si on a bien un utilisateur et que le mot de passe est correct alors :
     if ($user && password_verify($mot_de_passe, $user["mot_de_passe"])) {

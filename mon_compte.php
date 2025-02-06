@@ -3,6 +3,9 @@ require_once 'templates/header.php';
 require_once 'lib/user.php';
 require_once 'lib/pdo.php';
 
+
+
+
 ?>
 
 
@@ -15,6 +18,9 @@ require_once 'lib/pdo.php';
 </div>
 
 <h1 class="text-center py-5"><?= $_SESSION["user"]["credits"] ?> crédits</h1>
+
+
+<h1 class="text-center py-5"> Ma note : <?= $_SESSION["user"]["note"] ?></h1>
 
 
 
