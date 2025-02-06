@@ -3,6 +3,7 @@ require_once 'templates/header.php';
 require_once 'lib/user.php';
 require_once 'lib/pdo.php';
 require_once 'lib/lib_covoiturages.php';
+require_once 'lib/lib_ajout_vehicule.php';
 
 //Rediriger quelqu'un s'il n'est pas connecté
 if (!isset($_SESSION["user"])) {
@@ -27,6 +28,9 @@ foreach ($trajets as $trajet) {
     }
 }
 
+$user_id = $_SESSION["user"]["id"];
+$vehicules = getUserVehicule($pdo, $user_id);
+
 
 
 ?>
@@ -39,24 +43,48 @@ foreach ($trajets as $trajet) {
 <div class="container text-center">
     <button type="button" class="btn btn-primary"><a href="/ajout_covoiturage.php">Ajouter un trajet</a></button>
 </div>
+<div class="container text-center mt-3">
+    <button type="button" class="btn btn-primary"><a href="/ajout_vehicule.php">Ajouter un véhicule</a></button>
+</div>
 
 <h1 class="text-center py-5"><?= $_SESSION["user"]["credits"] ?> crédits</h1>
 
 
 <h1 class="text-center py-5"> Ma note : <?= $_SESSION["user"]["note"] ?></h1>
 
+<div class="container">
+    <h1 class="mt-4">Mon véhicule</h1>
+    <?php if (count($vehicules) > 0): ?>
+        <div class="row">
+            <?php foreach ($vehicules as $vehicule) { ?>
+                <div class="col-md-4 my-2 d-flex">
+                    <div class="card w-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title"><?= $vehicule["marque"]; ?> - <?= $vehicule["modele"]; ?></h5>
+                            <div class="text-start py-4">
+                                <p class="card-text"><i class="bi bi-calendar"></i> Couleur : <?= $vehicule["couleur"]; ?></p>
+                                <p class="card-text"><i class="bi bi-clock"></i> Plaque d'immatriculation : <?= $vehicule["plaque_immatriculation"]; ?></p>
+                                <p class="card-text"><i class="bi bi-clock"></i> Date première immatriculation : <?= $vehicule["date_premiere_immatriculation"]; ?></p>
+                                <p class="card-text"><i class="bi bi-piggy-bank"></i> Est écologique : <?= $vehicule["est_ecologique"]; ?> </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+
+    <?php else: ?>
+        <button type="button" class="btn btn-primary"><a href="/ajout_vehicule.php">Enregistre toon véhicule</a></button>
+    <?php endif; ?>
+</div>
+
 
 <div class="container">
-
     <h1 class="mt-4">Mes trajets à venir</h1>
-
     <?php if (count($trajets_a_venir) > 0): ?>
-
         <div class="row">
-
             <?php foreach ($trajets_a_venir as $trajet) { ?>
-
-
                 <div class="col-md-4 my-2 d-flex">
                     <div class="card w-100">
                         <div class="card-body d-flex flex-column">
@@ -73,15 +101,8 @@ foreach ($trajets as $trajet) {
                         </div>
                     </div>
                 </div>
-
-
             <?php } ?>
-
-
         </div>
-
-
-
 
     <?php else: ?>
         <p>Pas de trajets à venir</p>
@@ -89,9 +110,7 @@ foreach ($trajets as $trajet) {
     <?php endif; ?>
 
     <?php if (count($trajets_passes) > 0): ?>
-
         <h2 class="mt-5">Historique de mes trajets</h2>
-
         <div class="col-md-4 my-2 d-flex">
             <div class="card w-100">
                 <div class="card-body d-flex flex-column">
@@ -108,9 +127,7 @@ foreach ($trajets as $trajet) {
                 </div>
             </div>
         </div>
-
     <?php endif; ?>
-
 </div>
 
 
